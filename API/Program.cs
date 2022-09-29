@@ -16,6 +16,8 @@ builder.Services.AddDbContext<StoreContext>(opt  =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddCors();
 //Custom for this course
 
 var app = builder.Build();
@@ -45,6 +47,13 @@ if (app.Environment.IsDevelopment())
 
 //Custom for this course - Disabled HTTPS
 //app.UseHttpsRedirection();
+
+//Custom for this course
+app.UseRouting();
+app.UseCors(opt => {
+    opt.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+});
+//Custom for this course
 
 app.UseAuthorization();
 
