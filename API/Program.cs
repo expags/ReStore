@@ -1,4 +1,5 @@
 using API.Data;
+using API.Middleware;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
@@ -37,10 +38,12 @@ catch (Exception ex)
 }
 //Custom for this course
 
+app.UseMiddleware<ExceptionMiddleware>();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
+    //app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
@@ -51,7 +54,7 @@ if (app.Environment.IsDevelopment())
 //Custom for this course
 app.UseRouting();
 app.UseCors(opt => {
-    opt.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+    opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000");
 });
 //Custom for this course
 
