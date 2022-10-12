@@ -15,6 +15,7 @@ import { useStoreContext } from "../context/StoreContext";
 import { getCookie } from "../util/util";
 import agent from "../api/agent";
 import LoadingComponent from "./LoadingComponent";
+import CheckoutPage from "../../features/checkout/CheckoutPage";
 
 function App() {
 
@@ -28,6 +29,9 @@ function App() {
         .then(basket => setBasket(basket))
         .catch(error => console.log(error))
         .finally(() => setLoading(false))
+    }
+    else {
+      setLoading(false);
     }
   }, [setBasket])
   
@@ -61,6 +65,7 @@ function App() {
           <Route path="/about" element={<AboutPage/>} />
           <Route path="/contact" element={<ContactPage/>} />
           <Route path="/basket" element={<BasketPage/>} />
+          <Route path="/checkout" element={<CheckoutPage/>} />
         </Routes>
       </Container>
     </ThemeProvider>
