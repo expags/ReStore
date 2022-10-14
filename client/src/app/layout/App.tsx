@@ -2,7 +2,7 @@ import Catalog from "../../features/catalog/Catalog";
 import { Container, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import Header from "./Header";
 import { useEffect, useState } from "react";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import HomePage from "../../features/home/HomePage";
 import AboutPage from "../../features/about/AboutPage";
 import ProductDetails from "../../features/catalog/ProductDetails";

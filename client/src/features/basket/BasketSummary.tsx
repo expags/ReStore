@@ -2,10 +2,6 @@ import { TableContainer, Paper, Table, TableBody, TableRow, TableCell } from "@m
 import { useAppSelector } from "../../app/store/configureStore";
 import { currencyFormat } from "../../app/util/util";
 
-interface Props {
-    subtotal?: number;
-}
-
 function BasketSummary() {
     const {basket} = useAppSelector(state => state.basket);
     const subtotal = basket?.items.reduce((sum, item) => sum + (item.quantity * item.price), 0) ?? 0;
